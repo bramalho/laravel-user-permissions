@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/bramalho/laravel-user-permissions/downloads)](https://packagist.org/packages/bramalho/laravel-user-permissions)
 [![License](https://poser.pugx.org/bramalho/laravel-user-permissions/license)](https://packagist.org/packages/bramalho/laravel-user-permissions)
 
-Laravel User Permissions is a Laravel package that provide translations for your models.
+Laravel User Permissions is a Laravel package that provide a really simple user roles and permissions management.
 
 ## Installation
 Install the package
