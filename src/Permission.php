@@ -19,7 +19,7 @@ trait Permission
     public function hasRole($name)
     {
         foreach ($this->roles as $role) {
-            if ($role->name == $name) {
+            if ($role->name === $name) {
                 return true;
             }
         }
@@ -33,7 +33,7 @@ trait Permission
     public function hasRoleId($id)
     {
         foreach ($this->roles as $role) {
-            if ($role->id == $id) {
+            if ($role->id === $id) {
                 return true;
             }
         }
@@ -63,6 +63,10 @@ trait Permission
      */
     public function hasPermission($module, $action)
     {
+        if ($this->hasRole('SuperAdmin') || $this->hasRole('Super Admin')) {
+            return true;
+        }
+
         foreach ($this->roles as $role) {
             $permission = UserPermission::where('user_role_id', $role->id)
                 ->where('module', $module)
