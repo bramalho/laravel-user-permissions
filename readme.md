@@ -29,7 +29,7 @@ Add the Permission trait to your User model
 
 namespace App;
 
-use BRamalho\LaravelUserPermissions\Permission;
+use BRamalho\LaravelUserPermissions\Traits\Permission;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -48,8 +48,8 @@ Register the Middleware in `app\Http\Kernel.php`
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use BRamalho\LaravelUserPermissions\UserRoleMiddleware;
-use BRamalho\LaravelUserPermissions\UserHasPermissionMiddleware;
+use BRamalho\LaravelUserPermissions\Http\Middleware\UserHasRole;
+use BRamalho\LaravelUserPermissions\Http\Middleware\UserHasPermission;
 
 class Kernel extends HttpKernel
 {
@@ -57,8 +57,8 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         // ...
-        'role' => UserRoleMiddleware::class,
-        'permission' => UserHasPermissionMiddleware::class
+        'role' => UserHasRole::class,
+        'permission' => UserHasPermission::class
     ];
 }
 ```
@@ -71,14 +71,14 @@ php artisan migrate
 
 ## Usage
 
-You can assing or remove roles simply like this
+You can assign or remove roles simply like this
 ```php
 <?php
 
 use Illuminate\Database\Seeder;
 use App\User;
-use BRamalho\LaravelUserPermissions\UserRole;
-use BRamalho\LaravelUserPermissions\UserPermission;
+use BRamalho\LaravelUserPermissions\Models\UserRole;
+use BRamalho\LaravelUserPermissions\Models\UserPermission;
 
 class UsersTableSeeder extends Seeder
 {

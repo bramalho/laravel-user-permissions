@@ -1,6 +1,9 @@
 <?php
 
-namespace BRamalho\LaravelUserPermissions;
+namespace BRamalho\LaravelUserPermissions\Traits;
+
+use BRamalho\LaravelUserPermissions\Models\UserPermission;
+use BRamalho\LaravelUserPermissions\Models\UserRole;
 
 trait Permission
 {

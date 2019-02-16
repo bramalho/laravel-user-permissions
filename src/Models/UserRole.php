@@ -1,11 +1,12 @@
 <?php
 
-namespace BRamalho\LaravelUserPermissions;
+namespace BRamalho\LaravelUserPermissions\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class UserRole extends Model
 {
+    /** @var array $fillable */
     protected $fillable = ['name'];
 
     /**

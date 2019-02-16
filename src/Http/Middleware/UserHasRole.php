@@ -1,22 +1,21 @@
 <?php
 
-namespace BRamalho\LaravelUserPermissions;
+namespace BRamalho\LaravelUserPermissions\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class UserHasPermissionMiddleware
+class UserHasRole
 {
     /**
      * @param $request
      * @param Closure $next
-     * @param $module
-     * @param $action
+     * @param string $role
      * @return \Illuminate\Http\RedirectResponse|mixed
      */
-    public function handle($request, Closure $next, $module, $action)
+    public function handle($request, Closure $next, $role)
     {
-        if (Auth::guest() || !Auth::user()->hasPermission($module, $action)) {
+        if (Auth::guest() || !Auth::user()->hasRole($role)) {
             return redirect()->to('/');
         }
 
